@@ -53,9 +53,14 @@ body{
     height: 550px;
     padding: 10px;
     border-radius: 30px;
-    /* border: 1px solid black; */
 }
 .display{
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 15px;
+    flex-direction: column;
+    align-items: flex-end;
     width: 380px;
     height: 120px;
     border-radius: 25px;
@@ -64,36 +69,17 @@ body{
                 -2px 2px gray,
                 -3px 3px gray,
                 -4px 4px gray;
+    overflow: hidden;
 }
-/* #delete-buttons{
-    margin-top: 10px;
-    width: 380px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.delete-button{
-    font-size: 25px;
-    width: 49%;
-    height: 60px;
-    border-radius: 20px;
-    color: white;
+#calculation{
     font-family: inherit;
+    color: gray;
+    font-size: 18px;
 }
-#clear-button{
-    background-color: rgb(255, 52, 52);
-    box-shadow: -1px 1px gray,
-                -2px 2px gray,
-                -3px 3px gray,
-                -4px 4px gray;
+#result{
+    font-family: inherit;
+    font-size: 40px;
 }
-#remove-button{
-    background-color: rgb(65, 109, 252);
-    box-shadow: -1px 1px gray,
-                -2px 2px gray,
-                -3px 3px gray,
-                -4px 4px gray;
-} */
 #buttons{
     margin-top: 10px;
     width: 380px;
