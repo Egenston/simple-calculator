@@ -1,0 +1,173 @@
+*,
+*::before,
+*::after{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+}
+ul,
+ol,
+li{
+    list-style: none;
+}
+img{
+    vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    font-weight: inherit;
+    font-size: inherit;
+}
+html,
+body{
+    height: 100%;
+    line-height: 1;
+    font-size: 16px;
+    color: black;
+    font-family: 'Roboto Mono', monospace;
+}
+.wrapper{
+    background-color: lightgray;
+    min-height: 100%;
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.calculator{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 400px;
+    height: 550px;
+    padding: 10px;
+    border-radius: 30px;
+    /* border: 1px solid black; */
+}
+.display{
+    width: 380px;
+    height: 120px;
+    border-radius: 25px;
+    background-color: white;
+    box-shadow: -1px 1px gray,
+                -2px 2px gray,
+                -3px 3px gray,
+                -4px 4px gray;
+}
+/* #delete-buttons{
+    margin-top: 10px;
+    width: 380px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.delete-button{
+    font-size: 25px;
+    width: 49%;
+    height: 60px;
+    border-radius: 20px;
+    color: white;
+    font-family: inherit;
+}
+#clear-button{
+    background-color: rgb(255, 52, 52);
+    box-shadow: -1px 1px gray,
+                -2px 2px gray,
+                -3px 3px gray,
+                -4px 4px gray;
+}
+#remove-button{
+    background-color: rgb(65, 109, 252);
+    box-shadow: -1px 1px gray,
+                -2px 2px gray,
+                -3px 3px gray,
+                -4px 4px gray;
+} */
+#buttons{
+    margin-top: 10px;
+    width: 380px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: "clear clear remove divide"
+                         "seven eight nine times"
+                         "four five six minus"
+                         "one two three plus"
+                         "zero zero dot equals";
+    grid-auto-rows: 70px;
+    gap: 10px;
+}
+.button{
+    font-size: 30px;
+    border-radius: 20px;
+    color: gray;
+    font-family: inherit;
+    background-color: rgb(243, 243, 243);
+    box-shadow: -1px 1px gray,
+                -2px 2px gray,
+                -3px 3px gray,
+                -4px 4px gray;
+    transition: 0.1s;
+}
+.button:hover{
+    background-color: rgb(255, 255, 255);
+}
+#clear-button{
+    grid-area: clear;
+}
+#clear-button:hover{
+    background-color: rgb(250, 124, 124);
+    color: white;
+}
+#remove-button:hover{
+    background-color: rgb(113, 163, 255);
+    color: white;
+}
+#zero{
+    grid-area: zero;
+}
+.button.operation:hover{
+    background-color: rgb(255, 196, 86);
+    color: white;
+}
+#equals:hover{
+    background-color: rgb(83, 255, 83);
+    color: white;
+}
+.button:active{
+    box-shadow: none;
+    transform: translate(-4px, 4px);
+}
+footer{
+    position: fixed;
+    width: 100vw;
+    text-align: center;
+    bottom: 0;
+    padding-bottom: 10px;
+    padding-top: 5px;
+    font-family: inherit;
+    font-size: 20px;
+    color: gray;
+}
+.far.fa-copyright{
+    color: gray;
+    font-size: 17px;
+}
+.fab.fa-github{
+    color: gray;
+    font-size: 21px;
+    transition: 0.1s;
+}
+.fab.fa-github:hover{
+    transform: scale(1.2);
+}
