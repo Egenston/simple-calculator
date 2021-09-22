@@ -139,6 +139,16 @@ clearButton.addEventListener("click", () =>{
     outputText.textContent = "";
     resultText.textContent = "";
 });
+document.addEventListener("keydown", (event) => {
+    if(event.key == "Delete"){
+        var1 = "";
+        var2 = "";
+        output = "";
+        result = "";
+        outputText.textContent = "";
+        resultText.textContent = "";  
+    }
+})
 
 //calculation functions
 function operate() {
