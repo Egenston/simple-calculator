@@ -3,6 +3,7 @@ let var2 = "";
 let operation = "";
 let output = "";
 let result = 0;
+const numbers = ["0","1","2","3","4","5","6","7","8","9"];
 const numberButtons = document.querySelectorAll('.number');
 const outputText = document.querySelector('#calculation');
 const resultText = document.querySelector('#result');
@@ -42,38 +43,92 @@ numberButtons.forEach((button) => {
         }        
     })  
 });
+document.addEventListener("keydown", (event) => {
+    if(numbers.includes(event.key)){
+        if (output == "") {
+            var1 += event.key;
+            if (var1.length >= 12) {
+                resultText.style.fontSize = "27px";
+                resultText.textContent = "The number is too big";
+                var1 = "";
+            }
+            else {
+                resultText.style.fontSize = "40px";
+                resultText.textContent = var1;
+            }
+        }
+        else if (output.charAt(output.length - 2) == "=") {
+            var1 = "";
+            var1 += event.key;
+            resultText.textContent = var1;
+            output = "";
+            outputText.textContent = output;
+        }
+        else {
+            var2 += event.key;
+            if (var2.length >= 12) {
+                resultText.style.fontSize = "27px";
+                resultText.textContent = "The number is too big";
+                var2 = "";
+            }
+            else {
+                resultText.style.fontSize = "40px";
+                resultText.textContent = var2;
+            }
+        }
+    }
+})
+
 // dot button
 const dotButton = document.getElementById('dot');
-dotButton.addEventListener("click", () => {
-    if(output == ""){
-        if(!var1.includes(".") && var1.length >= 1){
+function dotCode() {
+    if (output == "") {
+        if (!var1.includes(".") && var1.length >= 1) {
             var1 += ".";
             resultText.textContent = var1;
         }
     }
-    else{
+    else {
         if (!var2.includes(".") && var2.length >= 1) {
             var2 += ".";
             resultText.textContent = var2;
         }
+    } 
+}
+dotButton.addEventListener("click", () => {
+    dotCode();
+});
+document.addEventListener("keydown", (event) => {
+    if(event.key == "."){
+        dotCode();
     }
 })
+
 // remove button
 const removeButton = document.getElementById('remove-button');
-removeButton.addEventListener("click", () =>{
-    if(output == ""){
-        if(var1.length>=1){
-            var1 = var1.substring(0, var1.length-1);
+function remove() {
+    if (output == "") {
+        if (var1.length >= 1) {
+            var1 = var1.substring(0, var1.length - 1);
             resultText.textContent = var1;
         }
     }
-    else{
+    else {
         if (var2.length >= 1) {
             var2 = var2.substring(0, var2.length - 1);
             resultText.textContent = var2;
         }
+    }  
+}
+removeButton.addEventListener("click", () =>{
+    remove();
+})
+document.addEventListener('keydown', (event) => {
+    if(event.code == "Backspace"){
+        remove();
     }
 })
+
 // clear button
 const clearButton = document.getElementById('clear-button');
 clearButton.addEventListener("click", () =>{
@@ -84,6 +139,8 @@ clearButton.addEventListener("click", () =>{
     outputText.textContent = "";
     resultText.textContent = "";
 });
+
+//calculation functions
 function operate() {
     if(operation == "plus"){
         result = +var1 + +var2;
@@ -122,34 +179,67 @@ function chooseOperation(operationSign, operationName) {
         topOutput(operationSign, operationName);
     }
 }
+
 // plus button
 const plusButton = document.getElementById('plus');
 plusButton.addEventListener("click", () => {
     chooseOperation(" + ", "plus");
 });
+document.addEventListener("keydown", (event) =>{
+    if(event.key == "+"){
+        chooseOperation(" + ", "plus");
+    }
+})
+
 // minus button
 const minusButton = document.getElementById('minus');
 minusButton.addEventListener("click", () => {
     chooseOperation(" - ", "minus");
 });
+document.addEventListener("keydown", (event) => {
+    if (event.key == "-") {
+        chooseOperation(" - ", "minus");
+    }
+})
+
 // times button
 const timesButton = document.getElementById('times');
 timesButton.addEventListener("click", () => {
     chooseOperation(" * ", "times");
 });
+document.addEventListener("keydown", (event) => {
+    if (event.key == "*") {
+        chooseOperation(" * ", "times");
+    }
+})
+
 // divide button
 const divideButton = document.getElementById('divide');
 divideButton.addEventListener("click", () => {
     chooseOperation(" / ", "divide");
 });
+document.addEventListener("keydown", (event) => {
+    if (event.key == "/") {
+        chooseOperation(" / ", "divide");
+    }
+})
+
 // equals button
-const equalsButton = document.getElementById('equals');
-equalsButton.addEventListener("click", () => {
-    if(var1.length != 0 && var2.length != 0 && output.charAt(output.length-2) != "="){
+function equalsCode() {
+    if (var1.length != 0 && var2.length != 0 && output.charAt(output.length - 2) != "=") {
         output += var2 + " = ";
         operate();
         operation = "";
         outputText.textContent = output;
     }
+}
+const equalsButton = document.getElementById('equals');
+equalsButton.addEventListener("click", () => {
+    equalsCode();
 });
+document.addEventListener("keydown", (event) => {
+    if(event.key == "=" || event.key == "Enter"){
+        equalsCode();
+    }
+})
 

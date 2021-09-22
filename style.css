@@ -104,6 +104,7 @@ body{
                 -3px 3px gray,
                 -4px 4px gray;
     transition: 0.1s;
+    outline: none;
 }
 .button:hover{
     background-color: rgb(255, 255, 255);
@@ -133,6 +134,7 @@ body{
 .button:active{
     box-shadow: none;
     transform: translate(-4px, 4px);
+    outline: none;
 }
 footer{
     position: fixed;
