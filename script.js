@@ -108,65 +108,39 @@ function operate() {
     var1 = result.toString();
     var2 = "";
 }
+function topOutput(operationSign, operationName) {
+    output = var1 + operationSign;
+    outputText.textContent = output;
+    operation = operationName;
+}
+function chooseOperation(operationSign, operationName) {
+    if (var1.length != 0 && (output == "" || (output != "" && var2.length == 0))) {
+        topOutput(operationSign, operationName);
+    }
+    else if (var1.length != 0 && var2.length != 0 && output != "") {
+        operate();
+        topOutput(operationSign, operationName);
+    }
+}
 // plus button
 const plusButton = document.getElementById('plus');
 plusButton.addEventListener("click", () => {
-    if (var1.length != 0 && (output == "" || (output != "" && var2.length == 0))){
-        output = var1 + " + ";
-        outputText.textContent = output;
-        operation = "plus";
-    }
-    else if(var1.length != 0 && var2.length != 0 && output != ""){
-        operate();
-        output = var1 + " + ";
-        outputText.textContent = output;
-        operation = "plus";
-    }
+    chooseOperation(" + ", "plus");
 });
 // minus button
 const minusButton = document.getElementById('minus');
 minusButton.addEventListener("click", () => {
-    if (var1.length != 0 && (output == "" || (output != "" && var2.length == 0))) {
-        output = var1 + " - ";
-        outputText.textContent = output;
-        operation = "minus";
-    }
-    else if (var1.length != 0 && var2.length != 0 && output != "") {
-        operate();
-        output = var1 + " - ";
-        outputText.textContent = output;
-        operation = "minus";
-    }
+    chooseOperation(" - ", "minus");
 });
 // times button
 const timesButton = document.getElementById('times');
 timesButton.addEventListener("click", () => {
-    if (var1.length != 0 && (output == "" || (output != "" && var2.length == 0))) {
-        output = var1 + " * ";
-        outputText.textContent = output;
-        operation = "times";
-    }
-    else if (var1.length != 0 && var2.length != 0 && output != "") {
-        operate();
-        output = var1 + " * ";
-        outputText.textContent = output;
-        operation = "times";
-    }
+    chooseOperation(" * ", "times");
 });
 // divide button
 const divideButton = document.getElementById('divide');
 divideButton.addEventListener("click", () => {
-    if (var1.length != 0 && (output == "" || (output != "" && var2.length == 0))) {
-        output = var1 + " / ";
-        outputText.textContent = output;
-        operation = "divide";
-    }
-    else if (var1.length != 0 && var2.length != 0 && output != "") {
-        operate();
-        output = var1 + " / ";
-        outputText.textContent = output;
-        operation = "divide";
-    }
+    chooseOperation(" / ", "divide");
 });
 // equals button
 const equalsButton = document.getElementById('equals');
