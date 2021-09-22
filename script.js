@@ -21,6 +21,13 @@ numberButtons.forEach((button) => {
                 resultText.textContent = var1;
             } 
         }
+        else if(output.charAt(output.length-2) == "="){
+            var1 = "";
+            var1 += button.value;
+            resultText.textContent = var1;
+            output = "";
+            outputText.textContent = output;
+        }
         else{
             var2 += button.value;
             if(var2.length >= 12){
@@ -96,6 +103,7 @@ function operate() {
             result = +var1;
         }
     }
+    result = parseFloat(result.toFixed(2));
     resultText.textContent = result;
     var1 = result.toString();
     var2 = "";
@@ -163,7 +171,7 @@ divideButton.addEventListener("click", () => {
 // equals button
 const equalsButton = document.getElementById('equals');
 equalsButton.addEventListener("click", () => {
-    if(var1.length != 0 && var2.length != 0){
+    if(var1.length != 0 && var2.length != 0 && output.charAt(output.length-2) != "="){
         output += var2 + " = ";
         operate();
         operation = "";
