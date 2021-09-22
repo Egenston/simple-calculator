@@ -211,7 +211,7 @@ document.addEventListener("keydown", (event) => {
     else if (event.key == ".") {
         dotCode();
     }
-    else if (event.code == "Backspace") {
+    else if (event.key == "Backspace") {
         remove();
     }
     else if (event.key == "Delete") {
