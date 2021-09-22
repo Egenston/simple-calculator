@@ -43,41 +43,6 @@ numberButtons.forEach((button) => {
         }        
     })  
 });
-document.addEventListener("keydown", (event) => {
-    if(numbers.includes(event.key)){
-        if (output == "") {
-            var1 += event.key;
-            if (var1.length >= 12) {
-                resultText.style.fontSize = "27px";
-                resultText.textContent = "The number is too big";
-                var1 = "";
-            }
-            else {
-                resultText.style.fontSize = "40px";
-                resultText.textContent = var1;
-            }
-        }
-        else if (output.charAt(output.length - 2) == "=") {
-            var1 = "";
-            var1 += event.key;
-            resultText.textContent = var1;
-            output = "";
-            outputText.textContent = output;
-        }
-        else {
-            var2 += event.key;
-            if (var2.length >= 12) {
-                resultText.style.fontSize = "27px";
-                resultText.textContent = "The number is too big";
-                var2 = "";
-            }
-            else {
-                resultText.style.fontSize = "40px";
-                resultText.textContent = var2;
-            }
-        }
-    }
-})
 
 // dot button
 const dotButton = document.getElementById('dot');
@@ -98,11 +63,6 @@ function dotCode() {
 dotButton.addEventListener("click", () => {
     dotCode();
 });
-document.addEventListener("keydown", (event) => {
-    if(event.key == "."){
-        dotCode();
-    }
-})
 
 // remove button
 const removeButton = document.getElementById('remove-button');
@@ -123,11 +83,6 @@ function remove() {
 removeButton.addEventListener("click", () =>{
     remove();
 })
-document.addEventListener('keydown', (event) => {
-    if(event.code == "Backspace"){
-        remove();
-    }
-})
 
 // clear button
 const clearButton = document.getElementById('clear-button');
@@ -139,16 +94,6 @@ clearButton.addEventListener("click", () =>{
     outputText.textContent = "";
     resultText.textContent = "";
 });
-document.addEventListener("keydown", (event) => {
-    if(event.key == "Delete"){
-        var1 = "";
-        var2 = "";
-        output = "";
-        result = "";
-        outputText.textContent = "";
-        resultText.textContent = "";  
-    }
-})
 
 //calculation functions
 function operate() {
@@ -195,44 +140,24 @@ const plusButton = document.getElementById('plus');
 plusButton.addEventListener("click", () => {
     chooseOperation(" + ", "plus");
 });
-document.addEventListener("keydown", (event) =>{
-    if(event.key == "+"){
-        chooseOperation(" + ", "plus");
-    }
-})
 
 // minus button
 const minusButton = document.getElementById('minus');
 minusButton.addEventListener("click", () => {
     chooseOperation(" - ", "minus");
 });
-document.addEventListener("keydown", (event) => {
-    if (event.key == "-") {
-        chooseOperation(" - ", "minus");
-    }
-})
 
 // times button
 const timesButton = document.getElementById('times');
 timesButton.addEventListener("click", () => {
     chooseOperation(" * ", "times");
 });
-document.addEventListener("keydown", (event) => {
-    if (event.key == "*") {
-        chooseOperation(" * ", "times");
-    }
-})
 
 // divide button
 const divideButton = document.getElementById('divide');
 divideButton.addEventListener("click", () => {
     chooseOperation(" / ", "divide");
 });
-document.addEventListener("keydown", (event) => {
-    if (event.key == "/") {
-        chooseOperation(" / ", "divide");
-    }
-})
 
 // equals button
 function equalsCode() {
@@ -247,9 +172,69 @@ const equalsButton = document.getElementById('equals');
 equalsButton.addEventListener("click", () => {
     equalsCode();
 });
+
+//keyboard support
 document.addEventListener("keydown", (event) => {
-    if(event.key == "=" || event.key == "Enter"){
+    if (numbers.includes(event.key)) {
+        if (output == "") {
+            var1 += event.key;
+            if (var1.length >= 12) {
+                resultText.style.fontSize = "27px";
+                resultText.textContent = "The number is too big";
+                var1 = "";
+            }
+            else {
+                resultText.style.fontSize = "40px";
+                resultText.textContent = var1;
+            }
+        }
+        else if (output.charAt(output.length - 2) == "=") {
+            var1 = "";
+            var1 += event.key;
+            resultText.textContent = var1;
+            output = "";
+            outputText.textContent = output;
+        }
+        else {
+            var2 += event.key;
+            if (var2.length >= 12) {
+                resultText.style.fontSize = "27px";
+                resultText.textContent = "The number is too big";
+                var2 = "";
+            }
+            else {
+                resultText.style.fontSize = "40px";
+                resultText.textContent = var2;
+            }
+        }
+    }
+    else if (event.key == ".") {
+        dotCode();
+    }
+    else if (event.code == "Backspace") {
+        remove();
+    }
+    else if (event.key == "Delete") {
+        var1 = "";
+        var2 = "";
+        output = "";
+        result = "";
+        outputText.textContent = "";
+        resultText.textContent = "";
+    }
+    else if (event.key == "+") {
+        chooseOperation(" + ", "plus");
+    }
+    else if (event.key == "-") {
+        chooseOperation(" - ", "minus");
+    }
+    else if (event.key == "*") {
+        chooseOperation(" * ", "times");
+    }
+    else if (event.key == "/") {
+        chooseOperation(" / ", "divide");
+    }
+    else if (event.key == "=" || event.key == "Enter") {
         equalsCode();
     }
 })
-
